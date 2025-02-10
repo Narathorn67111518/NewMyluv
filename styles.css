@@ -88,4 +88,119 @@ body {
     margin: 0 5px;
     cursor: pointer;
 }
+/* ตั้งค่าพื้นฐาน */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.playlist-container {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.playlist-title {
+    font-size: 24px;
+    color: #0078d4;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.song-title {
+    font-size: 18px;
+    color: #333;
+}
+
+.artist {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* แถบความคืบหน้า */
+.progress-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.progress {
+    flex: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-filled {
+    height: 100%;
+    background: linear-gradient(135deg, #80d0c7, #0093e9);
+    width: 0%;
+    transition: width 0.2s ease-in-out;
+}
+
+/* ดีไซน์ปุ่ม */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ไอคอน */
+.btn i {
+    font-size: 24px;
+}
 
