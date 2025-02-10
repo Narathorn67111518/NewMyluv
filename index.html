@@ -33,11 +33,6 @@
     <button id="play-btn" class="btn">⏯️</button>
     <button id="next-btn" class="btn">⏭️</button>
 </div>
-
-<div class="volume-control">
-    <label for="volume-slider" class="volume-label">🔊</label>
-    <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.1" value="0.5">
-</div>
             </div>
         </div>
     </div>
@@ -69,15 +64,6 @@
                 duration: "3:30"
             }
         ];
-// อ้างอิงองค์ประกอบ HTML
-const volumeSlider = document.getElementById("volume-slider");
-
-// ฟังก์ชันปรับระดับเสียง
-volumeSlider.addEventListener("input", (e) => {
-    const volume = e.target.value;
-    audio.volume = volume; // ตั้งค่าระดับเสียงใน audio
-});
-
         let currentSongIndex = 0;
         let isPlaying = false;
 
