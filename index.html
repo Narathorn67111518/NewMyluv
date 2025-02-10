@@ -4,30 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For you</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="playlist-container">
-        <h1 class="playlist-title">Playlist</h1>
-        <p class="subtitle">Songs that remind me of you</p>
-
-        <div class="player">
-            <div class="image-container">
-                <img id="album-art" src="image1.jpg" alt="Album Art">
-            </div>
-
-            <div class="details">
-                <h2 id="song-title" class="song-title">Seasons</h2>
-                <p id="artist" class="artist">Wave to Earth</p>
-
-                <div class="progress-bar">
-                    <span id="current-time" class="current-time">0:00</span>
-                    <div class="progress">
-                        <div id="progress-filled" class="progress-filled"></div>
-                    </div>
-                    <span id="duration" class="duration">0:00</span>
-                </div>
- <style>
+     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -83,6 +60,30 @@
             100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
         }
     </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="playlist-container">
+        <h1 class="playlist-title">Playlist</h1>
+        <p class="subtitle">Songs that remind me of you</p>
+
+        <div class="player">
+            <div class="image-container">
+                <img id="album-art" src="image1.jpg" alt="Album Art">
+            </div>
+
+            <div class="details">
+                <h2 id="song-title" class="song-title">Seasons</h2>
+                <p id="artist" class="artist">Wave to Earth</p>
+
+                <div class="progress-bar">
+                    <span id="current-time" class="current-time">0:00</span>
+                    <div class="progress">
+                        <div id="progress-filled" class="progress-filled"></div>
+                    </div>
+                    <span id="duration" class="duration">0:00</span>
+                </div>
+
               <div class="controls">
     <button id="prev-btn" class="btn">⏮️</button>
     <button id="play-btn" class="btn">⏯️</button>
