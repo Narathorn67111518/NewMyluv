@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #4a4a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.playlist-container {
+    width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.playlist-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 20px;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.details {
+    width: 100%;
+}
+
+.song-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.artist {
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.progress {
+    flex: 1;
+    height: 5px;
+    background: #ddd;
+    margin: 0 10px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.progress-filled {
+    height: 5px;
+    width: 50%;
+    background: #3498db;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.controls .btn {
+    font-size: 18px;
+    background: none;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist UI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="playlist-container">
+        <h1 class="playlist-title">Playlist</h1>
+        <p class="subtitle">Songs that remind me of you</p>
+
+        <div class="player">
+            <div class="image-container">
+                <img id="album-art" src="image1.jpg" alt="Album Art">
+            </div>
+
+            <div class="details">
+                <h2 id="song-title" class="song-title">Seasons</h2>
+                <p id="artist" class="artist">Wave to Earth</p>
+
+                <div class="progress-bar">
+                    <span id="current-time" class="current-time">0:00</span>
+                    <div class="progress">
+                        <div id="progress-filled" class="progress-filled"></div>
+                    </div>
+                    <span id="duration" class="duration">0:00</span>
+                </div>
+
+                <div class="controls">
+                    <button id="prev-btn" class="btn">⏮️</button>
+                    <button id="play-btn" class="btn">⏯️</button>
+                    <button id="next-btn" class="btn">⏭️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio"></audio>
+
+    <script>
+        // เพลย์ลิสต์เพลง
+        const playlist = [
+            {
+                title: "Seasons",
+                artist: "Wave to Earth",
+                image: "seasons.jpg",
+                src: "seasons.mp3",
+                duration: "1:16"
+            },
+            {
+                title: "blue",
+                artist: "yung kai",
+                image: "blue.jpg",
+                src: "yung kai  blue Official Audio.mp3",
+                duration: "2:30"
+            },
+            {
+                title: "Daylight",
+                artist: "Joji",
+                image: "image3.jpg",
+                src: "song3.mp3",
+                duration: "2:32"
+            }
+        ];
+
+        let currentSongIndex = 0;
+        let isPlaying = false;
+
+        // อ้างอิงองค์ประกอบ HTML
+        const songTitle = document.getElementById("song-title");
+        const artist = document.getElementById("artist");
+        const albumArt = document.getElementById("album-art");
+        const duration = document.getElementById("duration");
+        const currentTimeEl = document.getElementById("current-time");
+        const progressFilled = document.getElementById("progress-filled");
+
+        const prevBtn = document.getElementById("prev-btn");
+        const playBtn = document.getElementById("play-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const audio = document.getElementById("audio");
+
+        // โหลดเพลงใหม่
+        function loadSong(index) {
+            const song = playlist[index];
+            songTitle.textContent = song.title;
+            artist.textContent = song.artist;
+            albumArt.src = song.image;
+            audio.src = song.src;
+            duration.textContent = song.duration;
+            progressFilled.style.width = "0%";
+        }
+
+        // อัปเดตแถบความคืบหน้าของเพลง
+        function updateProgress() {
+            const currentTime = audio.currentTime;
+            const duration = audio.duration;
+            currentTimeEl.textContent = formatTime(currentTime);
+            const progressPercent = (currentTime / duration) * 100;
+            progressFilled.style.width = `${progressPercent}%`;
+        }
+
+        // แปลงเวลาเป็นรูปแบบ mm:ss
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+            return `${minutes}:${seconds}`;
+        }
+
+        // ฟังก์ชันเล่นหรือหยุดเพลง
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+        }
+
+        // จัดการสถานะการเล่น
+        audio.addEventListener("play", () => {
+            isPlaying = true;
+            playBtn.textContent = "⏸️"; // เปลี่ยนไอคอนปุ่ม
+        });
+
+        audio.addEventListener("pause", () => {
+            isPlaying = false;
+            playBtn.textContent = "⏯️"; // เปลี่ยนไอคอนปุ่ม
+        });
+
+        audio.addEventListener("timeupdate", updateProgress);
+
+        // ฟังก์ชันเลื่อนเพลงก่อนหน้า
+        prevBtn.addEventListener("click", () => {
+            currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+            loadSong(currentSongIndex);
+            audio.play();
+        });
+
+        // ฟังก์ชันเลื่อนเพลงถัดไป
+        nextBtn.addEventListener("click", () => {
+            currentSongIndex = (currentSongIndex + 1) % playlist.length;
+            loadSong(currentSongIndex);
+            audio.play();
+        });
+
+        // ควบคุมการเล่น/หยุดเพลง
+        playBtn.addEventListener("click", togglePlay);
+
+        // โหลดเพลงเริ่มต้น
+        loadSong(currentSongIndex);
+    </script>
+</body>
+</html>
