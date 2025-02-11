@@ -45,13 +45,7 @@
         }
         .clip-container video {
             width: 100%;
-            border-radius: 50px;
-        }
-        .image-text-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-top: 10px;
+            border-radius: 10px;
         }
         .image-container {
             width: 200px;
@@ -67,7 +61,6 @@
             object-fit: cover;
         }
         .description {
-            font-family: 'Quicksand', sans-serif;
             font-size: 30px;
             font-weight: 600;
             color: #e97f7f;
@@ -75,17 +68,12 @@
             opacity: 0;
             animation: fadeLoop 4s infinite ease-in-out;
         }
-
-        /* เอฟเฟกต์ข้อความวนลูป */
         @keyframes fadeLoop {
             0% { opacity: 0; transform: translateY(10px); }
             50% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-10px); }
         }
-
-        /* ปุ่ม Next อยู่ตรงกลางล่าง */
-        .next-button {
-            margin-top: 20px;
+        .next-button, #play-music {
             cursor: pointer;
             font-weight: 700;
             transition: all 0.2s;
@@ -100,23 +88,18 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            margin-top: 10px;
         }
-        .next-button:hover {
+        .next-button:hover, #play-music:hover {
             background: #f4a1a1;
             border: 2px solid #f4a1a1;
         }
-        .next-button svg {
-            width: 25px;
-            margin-left: 10px;
-            transition: transform 0.3s ease-in-out;
+        .next-button {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        .next-button:hover svg {
-            transform: translateX(5px);
-        }
-        .next-button:active {
-            transform: scale(0.95);
-        }
-
     </style>
 </head>
 <body>
@@ -129,8 +112,7 @@
                 Your browser does not support the video tag.
             </video>
             <audio id="bg-music" loop>
-                <source src="Billie Eilish.mp3" type="audio/mpeg">
-                เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
+                <source src="Billie_Eilish.mp3" type="audio/mpeg">
             </audio>
         </div>
         <div class="image-text-container">
@@ -139,27 +121,25 @@
             </div>
             <p class="description">A special gift <br> for her</p>
         </div>
+        <button id="play-music">Play Music</button>
     </div>
-
-    <!-- ปุ่ม Next อยู่ข้างนอกกรอบ -->
-    <button class="next-button" onclick="goToNextPage()">
-        Next 
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74" height="34" width="34">
-            <circle stroke-width="3" stroke="white" r="35.5" cy="37" cx="37"></circle>
-            <path fill="white" d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"></path>
-        </svg>
-    </button>
-
+    <button class="next-button" onclick="goToNextPage()">Next</button>
+    
     <script>
         function goToNextPage() {
             window.location.href = "index2.html";
         }
 
-        // เล่นเพลงอัตโนมัติเมื่อหน้าโหลด
-        window.onload = function() {
+        document.getElementById("play-music").addEventListener("click", function() {
             const music = document.getElementById("bg-music");
-            music.play().catch(error => console.log("Autoplay failed:", error));
-        };
+            if (music.paused) {
+                music.play().catch(error => console.log("Autoplay failed:", error));
+                this.textContent = "Pause Music";
+            } else {
+                music.pause();
+                this.textContent = "Play Music";
+            }
+        });
     </script>
 </body>
 </html>
