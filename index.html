@@ -47,9 +47,6 @@
             width: 100%;
             border-radius: 50px;
         }
-        audio {
-            margin-top: 14px;
-        }
         .image-text-container {
             display: flex;
             align-items: center;
@@ -76,19 +73,14 @@
             color: #e97f7f;
             font-style: italic;
             opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
+            animation: fadeLoop 4s infinite ease-in-out;
         }
 
-        /* เอฟเฟกต์ Fade-in */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* เอฟเฟกต์ข้อความวนลูป */
+        @keyframes fadeLoop {
+            0% { opacity: 0; transform: translateY(10px); }
+            50% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
         }
 
         /* ปุ่ม Next อยู่ตรงกลางล่าง */
@@ -137,7 +129,7 @@
                 Your browser does not support the video tag.
             </video>
             <audio id="bg-music" loop>
-                <source src="Billie Eilish.mp3" type="audio/mpeg">
+                <source src="yung_kai_blue.mp3" type="audio/mpeg">
                 เบราว์เซอร์ของคุณไม่รองรับการเล่นเสียง
             </audio>
         </div>
